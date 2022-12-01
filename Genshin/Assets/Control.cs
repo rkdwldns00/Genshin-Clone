@@ -18,6 +18,10 @@ public class Control : MonoBehaviour
         Debug.Log(Input.GetAxis("Vertical"));
         animator.SetBool("isWalk", Input.GetAxis("Vertical") != 0f || Input.GetAxis("Horizontal") != 0f);
         animator.SetBool("isRun", Input.GetKey(KeyCode.LeftShift));
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            animator.SetTrigger("useAttack");
+        }
         if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0) {
             transform.rotation = transform.rotation = Quaternion.Lerp(Quaternion.Euler(0, (Mathf.Atan2(-Input.GetAxis("Vertical"), Input.GetAxis("Horizontal")) * Mathf.Rad2Deg) + 90f, 0), transform.rotation, 1-Time.deltaTime * 5);
         }
